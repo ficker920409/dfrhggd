@@ -5,30 +5,70 @@
         <h1>Weather in <%= city %> - 10 Days</h1>
     </div>
 
-    <section class="extended-forecast">
-        <div class="forecast-table">
-            <% dailyForecast.forEach(day => { %>
-                <div class="extended-row">
-                    <div class="row-date">
-                        <div class="date-day"><%= day.dayNameLong %></div>
-                        <div class="date-full"><%= day.dateStr %></div>
-                    </div>
-                    <div class="row-icon">
-                        <img src="/images/weather-icons/<%= day.code %>.svg" alt="<%= day.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
-                    </div>
-                    <div class="row-condition"><%= day.condition %></div>
-                    <div class="row-temp">
-                        <span class="temp-max"><%= day.tempMax > 0 ? '+' : '' %><%= day.tempMax %>°</span>
-                        <span class="temp-min"><%= day.tempMin > 0 ? '+' : '' %><%= day.tempMin %>°</span>
-                    </div>
-                    <div class="row-details">
-                        <span>Wind: <%= day.wind %> m/s</span>
-                        <span>Humidity: <%= day.humidity %>%</span>
-                        <span>Precip: <%= day.precipitation %>%</span>
-                    </div>
-                </div>
-            <% }) %>
-        </div>
+    <section class="forecast-widget">
+        <table class="forecast-table">
+            <thead>
+                <tr>
+                    <th rowspan="2">Parameter</th>
+                    <% dailyForecast.forEach(day => { %>
+                        <th class="day-header">
+                            <%= day.dayName %>
+                            <span class="day-date"><%= day.dateStr %></span>
+                        </th>
+                    <% }) %>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row-header">Icon</td>
+                    <% dailyForecast.forEach(day => { %>
+                        <td class="weather-icon-cell">
+                            <img src="/images/weather-icons/<%= day.code %>.svg" alt="<%= day.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
+                        </td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td class="row-header">Temp (Day)</td>
+                    <% dailyForecast.forEach(day => { %>
+                        <td class="temp-cell <%= day.tempMax > 0 ? 'temp-positive' : 'temp-negative' %>">
+                            <%= day.tempMax > 0 ? '+' : '' %><%= day.tempMax %>°
+                        </td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td class="row-header">Temp (Night)</td>
+                    <% dailyForecast.forEach(day => { %>
+                        <td class="<%= day.tempMin > 0 ? 'temp-positive' : 'temp-negative' %>">
+                            <%= day.tempMin > 0 ? '+' : '' %><%= day.tempMin %>°
+                        </td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td class="row-header">Precipitation</td>
+                    <% dailyForecast.forEach(day => { %>
+                        <td class="precip-cell"><%= day.precipitation %>%</td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td class="row-header">Wind</td>
+                    <% dailyForecast.forEach(day => { %>
+                        <td class="wind-cell"><%= day.wind %> m/s<br><%= day.windDir %></td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td class="row-header">Humidity</td>
+                    <% dailyForecast.forEach(day => { %>
+                        <td class="humidity-cell"><%= day.humidity %>%</td>
+                    <% }) %>
+                </tr>
+                <tr>
+                    <td class="row-header">Pressure</td>
+                    <% dailyForecast.forEach(day => { %>
+                        <td class="pressure-cell"><%= day.pressure %></td>
+                    <% }) %>
+                </tr>
+            </tbody>
+        </table>
     </section>
 </div>
 
