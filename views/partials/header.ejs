@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast - <%= city %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-logo">
+                    <a href="/">WEATHER</a>
+                </div>
+                <nav class="header-menu">
+                    <a href="/" class="menu-item">Weather</a>
+                </nav>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <div class="search-box">
+                    <form action="/" method="GET" class="search-form">
+                        <input type="text" name="city" placeholder="Search location" class="search-input" value="<%= city %>">
+                        <button type="submit" class="search-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                <nav class="main-nav">
+                    <a href="/now?city=<%= city %>" class="nav-link <%= activePage === 'now' ? 'active' : '' %>">Now</a>
+                    <a href="/today?city=<%= city %>" class="nav-link <%= activePage === 'today' ? 'active' : '' %>">Today</a>
+                    <a href="/tomorrow?city=<%= city %>" class="nav-link <%= activePage === 'tomorrow' ? 'active' : '' %>">Tomorrow</a>
+                    <a href="/3-days?city=<%= city %>" class="nav-link <%= activePage === '3-days' ? 'active' : '' %>">3 Days</a>
+                    <a href="/weekend?city=<%= city %>" class="nav-link <%= activePage === 'weekend' ? 'active' : '' %>">Weekend</a>
+                    <a href="/10-days?city=<%= city %>" class="nav-link <%= activePage === '10-days' ? 'active' : '' %>">10 Days</a>
+                    <a href="/2-weeks?city=<%= city %>" class="nav-link <%= activePage === '2-weeks' ? 'active' : '' %>">2 Weeks</a>
+                    <a href="/month?city=<%= city %>" class="nav-link <%= activePage === 'month' ? 'active' : '' %>">Month</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">

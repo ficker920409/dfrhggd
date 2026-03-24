@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="page-title">
+        <h1>Weather in <%= city %> - Tomorrow</h1>
+        <% const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1); %>
+        <p class="page-subtitle"><%= tomorrow.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) %></p>
+    </div>
+
+    <section class="tomorrow-summary">
+        <div class="summary-card">
+            <div class="summary-icon">
+                <img src="/images/weather-icons/<%= tomorrowWeather.code %>.svg" alt="<%= tomorrowWeather.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
+            </div>
+            <div class="summary-temp">
+                <span class="temp-main"><%= tomorrowWeather.temp > 0 ? '+' : '' %><%= tomorrowWeather.temp %>°C</span>
+                <span class="temp-feels">Feels like <%= tomorrowWeather.feelsLike > 0 ? '+' : '' %><%= tomorrowWeather.feelsLike %>°C</span>
+            </div>
+            <div class="summary-condition"><%= tomorrowWeather.condition %></div>
+        </div>
+    </section>
+
+    <section class="hourly-detailed">
+        <h2 class="section-title">Hourly Forecast for Tomorrow</h2>
+        <div class="hourly-table">
+            <% hourlyForecast.forEach(hour => { %>
+                <div class="hourly-row">
+                    <div class="hour-time"><%= hour.hour.toString().padStart(2, '0') %>:00</div>
+                    <div class="hour-icon">
+                        <img src="/images/weather-icons/<%= hour.code %>.svg" alt="<%= hour.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
+                    </div>
+                    <div class="hour-temp"><%= hour.temp > 0 ? '+' : '' %><%= hour.temp %>°C</div>
+                    <div class="hour-feels">Feels <%= hour.feelsLike > 0 ? '+' : '' %><%= hour.feelsLike %>°</div>
+                    <div class="hour-wind"><%= hour.wind %> m/s <%= hour.windDir %></div>
+                    <div class="hour-humidity"><%= hour.humidity %>%</div>
+                    <div class="hour-pressure"><%= hour.pressure %> hPa</div>
+                    <div class="hour-precip"><%= hour.precipitation %>%</div>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+</div>
+
+<%- include('partials/footer') %>

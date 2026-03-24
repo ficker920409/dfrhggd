@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="page-title">
+        <h1>Weather in <%= city %> - 3 Days</h1>
+    </div>
+
+    <section class="multi-day-forecast">
+        <% dailyForecast.forEach(day => { %>
+            <div class="day-card">
+                <div class="day-header">
+                    <h3><%= day.dayNameLong %></h3>
+                    <p class="day-date"><%= day.dateStr %></p>
+                </div>
+                <div class="day-body">
+                    <div class="day-icon-large">
+                        <img src="/images/weather-icons/<%= day.code %>.svg" alt="<%= day.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
+                    </div>
+                    <div class="day-temps">
+                        <div class="temp-range">
+                            <span class="temp-max"><%= day.tempMax > 0 ? '+' : '' %><%= day.tempMax %>°</span>
+                            <span class="temp-sep">/</span>
+                            <span class="temp-min"><%= day.tempMin > 0 ? '+' : '' %><%= day.tempMin %>°</span>
+                        </div>
+                        <div class="day-condition"><%= day.condition %></div>
+                    </div>
+                    <div class="day-details-grid">
+                        <div class="detail-item">
+                            <span class="label">Wind</span>
+                            <span class="value"><%= day.wind %> m/s <%= day.windDir %></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Humidity</span>
+                            <span class="value"><%= day.humidity %>%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Precipitation</span>
+                            <span class="value"><%= day.precipitation %>%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Pressure</span>
+                            <span class="value"><%= day.pressure %> hPa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </section>
+</div>
+
+<%- include('partials/footer') %>

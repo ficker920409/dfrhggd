@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="page-title">
+        <h1>Weather in <%= city %> - 2 Weeks</h1>
+    </div>
+
+    <section class="extended-forecast">
+        <div class="forecast-table">
+            <% dailyForecast.forEach(day => { %>
+                <div class="extended-row">
+                    <div class="row-date">
+                        <div class="date-day"><%= day.dayNameLong %></div>
+                        <div class="date-full"><%= day.dateStr %></div>
+                    </div>
+                    <div class="row-icon">
+                        <img src="/images/weather-icons/<%= day.code %>.svg" alt="<%= day.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
+                    </div>
+                    <div class="row-condition"><%= day.condition %></div>
+                    <div class="row-temp">
+                        <span class="temp-max"><%= day.tempMax > 0 ? '+' : '' %><%= day.tempMax %>°</span>
+                        <span class="temp-min"><%= day.tempMin > 0 ? '+' : '' %><%= day.tempMin %>°</span>
+                    </div>
+                    <div class="row-details">
+                        <span>Wind: <%= day.wind %> m/s</span>
+                        <span>Humidity: <%= day.humidity %>%</span>
+                        <span>Precip: <%= day.precipitation %>%</span>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+</div>
+
+<%- include('partials/footer') %>

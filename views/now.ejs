@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="page-title">
+        <h1>Weather in <%= city %> - Now</h1>
+    </div>
+
+    <section class="now-page">
+        <div class="now-main">
+            <div class="now-temp">
+                <div class="temp-display">
+                    <span class="temp-value"><%= currentWeather.temp > 0 ? '+' : '' %><%= currentWeather.temp %></span>
+                    <span class="temp-unit">°C</span>
+                </div>
+                <div class="temp-condition"><%= currentWeather.condition %></div>
+            </div>
+            <div class="now-icon">
+                <img src="/images/weather-icons/<%= currentWeather.code %>.svg" alt="<%= currentWeather.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
+            </div>
+        </div>
+
+        <div class="now-details">
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="card-label">Feels Like</div>
+                    <div class="card-value"><%= currentWeather.feelsLike > 0 ? '+' : '' %><%= currentWeather.feelsLike %>°C</div>
+                </div>
+                <div class="detail-card">
+                    <div class="card-label">Wind</div>
+                    <div class="card-value"><%= currentWeather.wind %> m/s</div>
+                    <div class="card-extra"><%= currentWeather.windDir %></div>
+                </div>
+                <div class="detail-card">
+                    <div class="card-label">Humidity</div>
+                    <div class="card-value"><%= currentWeather.humidity %>%</div>
+                </div>
+                <div class="detail-card">
+                    <div class="card-label">Pressure</div>
+                    <div class="card-value"><%= currentWeather.pressure %> hPa</div>
+                </div>
+                <div class="detail-card">
+                    <div class="card-label">Visibility</div>
+                    <div class="card-value"><%= currentWeather.visibility %> km</div>
+                </div>
+                <div class="detail-card">
+                    <div class="card-label">Dew Point</div>
+                    <div class="card-value"><%= currentWeather.dewPoint > 0 ? '+' : '' %><%= currentWeather.dewPoint %>°C</div>
+                </div>
+                <div class="detail-card">
+                    <div class="card-label">UV Index</div>
+                    <div class="card-value"><%= currentWeather.uvIndex %></div>
+                </div>
+                <div class="detail-card">
+                    <div class="card-label">Cloudiness</div>
+                    <div class="card-value"><%= currentWeather.cloudiness %>%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<%- include('partials/footer') %>

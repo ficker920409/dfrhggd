@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="page-title">
+        <h1>Weather in <%= city %> - Weekend</h1>
+    </div>
+
+    <section class="weekend-forecast">
+        <% weekendForecast.forEach(day => { %>
+            <div class="weekend-card">
+                <div class="weekend-header">
+                    <h2><%= day.dayName %></h2>
+                    <p class="weekend-date"><%= day.dateStr %></p>
+                </div>
+                <div class="weekend-body">
+                    <div class="weekend-icon">
+                        <img src="/images/weather-icons/<%= day.code %>.svg" alt="<%= day.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
+                    </div>
+                    <div class="weekend-temp">
+                        <span class="temp-max"><%= day.tempMax > 0 ? '+' : '' %><%= day.tempMax %>°C</span>
+                        <span class="temp-min"><%= day.tempMin > 0 ? '+' : '' %><%= day.tempMin %>°C</span>
+                    </div>
+                    <div class="weekend-condition"><%= day.condition %></div>
+                    <div class="weekend-details">
+                        <div class="detail-row">
+                            <span>Wind:</span>
+                            <span><%= day.wind %> m/s <%= day.windDir %></span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Humidity:</span>
+                            <span><%= day.humidity %>%</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Precipitation:</span>
+                            <span><%= day.precipitation %>%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </section>
+</div>
+
+<%- include('partials/footer') %>

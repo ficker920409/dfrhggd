@@ -1,68 +1,92 @@
-# WeatherNow - Weather Forecast Website
+# Weather Forecast Website
 
-A modern, responsive weather forecast website inspired by professional weather services.
+A weather forecast website with EJS templates and Express.js backend, inspired by professional weather services.
 
 ## Features
 
 ### Pages
-- **Main Weather Page** (`index.html`) - Current weather, hourly preview, and 7-day forecast
-- **Hourly Forecast** (`hourly.html`) - Detailed 48-hour forecast with all weather parameters
-- **10 Day Forecast** (`10days.html`) - Extended weather outlook with statistics
-- **Monthly Forecast** (`month.html`) - Calendar view of the entire month with statistics
+- **Main Page** (`/`) - Current weather, hourly preview, and 7-day forecast
+- **Now** (`/now`) - Detailed current weather conditions
+- **Today** (`/today`) - Hourly forecast for today
+- **Tomorrow** (`/tomorrow`) - Weather forecast for tomorrow
+- **3 Days** (`/3-days`) - 3-day detailed forecast
+- **Weekend** (`/weekend`) - Weekend weather outlook
+- **10 Days** (`/10-days`) - Extended 10-day forecast
+- **2 Weeks** (`/2-weeks`) - Two-week forecast
+- **Month** (`/month`) - Monthly calendar view
 
 ### Key Features
-- 🔍 City search functionality
-- 📱 Fully responsive design
-- 🌡️ Temperature, humidity, wind, pressure data
-- 🌅 Sunrise/sunset information
-- 💨 Air quality index
-- 📊 Weather statistics and summaries
-- 🎨 Modern, clean UI with smooth animations
+- City search functionality
+- Responsive design for all devices
+- Temperature, humidity, wind, pressure data
+- Weather icons for different conditions
+- Clean, professional UI inspired by Gismeteo
 
 ## Technology Stack
-- HTML5
-- CSS3 (with CSS Variables)
+- Node.js + Express.js
+- EJS templating engine
 - Vanilla JavaScript
-- Mock data generation for demonstration
+- CSS3
+- Mock weather data (for demonstration)
+
+## Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start the server
+npm start
+
+# Development mode with auto-reload
+npm run dev
+```
+
+The application will be available at `http://localhost:3000`
+
+## Project Structure
+```
+├── data/
+│   └── weatherData.js      # Mock weather data generator
+├── public/
+│   ├── css/
+│   │   └── style.css       # Main stylesheet
+│   ├── js/
+│   │   └── app.js          # Client-side JavaScript
+│   └── images/
+│       └── weather-icons/  # Weather condition icons
+├── views/
+│   ├── partials/
+│   │   ├── header.ejs      # Header partial
+│   │   └── footer.ejs      # Footer partial
+│   ├── index.ejs           # Main page
+│   ├── now.ejs             # Current weather page
+│   ├── today.ejs           # Today's forecast
+│   ├── tomorrow.ejs        # Tomorrow's forecast
+│   ├── 3-days.ejs          # 3-day forecast
+│   ├── weekend.ejs         # Weekend forecast
+│   ├── 10-days.ejs         # 10-day forecast
+│   ├── 2-weeks.ejs         # 2-week forecast
+│   └── month.ejs           # Monthly calendar
+├── server.js               # Express server
+└── package.json            # Dependencies
+```
 
 ## Usage
 
-Simply open `index.html` in a web browser to start using the application.
+### Search for a City
+Use the search box in the header to look up weather for different cities.
 
-### Navigation
-- Use the top navigation bar to switch between different forecast views
-- Search for any city using the search box in the header
-- Click on forecast cards for more details (interactive elements)
+### Navigate Between Views
+Use the navigation menu to switch between different forecast periods.
 
-## File Structure
-```
-├── index.html          # Main weather page
-├── hourly.html         # Hourly forecast page
-├── 10days.html         # 10-day forecast page
-├── month.html          # Monthly forecast page
-├── styles.css          # Main stylesheet
-├── hourly.css          # Hourly page styles
-├── 10days.css          # 10-day page styles
-├── month.css           # Monthly page styles
-├── app.js              # Main application logic
-├── hourly.js           # Hourly page logic
-├── 10days.js           # 10-day page logic
-├── month.js            # Monthly page logic
-└── weather-data.js     # Mock data generator
-```
+## API Integration
+This is a demonstration using mock data. To integrate with a real weather API:
 
-## Data
-This is a demonstration website using randomly generated weather data. In a production environment, you would integrate with a real weather API like:
-- OpenWeatherMap
-- WeatherAPI
-- AccuWeather API
-- Visual Crossing Weather
-
-## Browser Support
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+1. Sign up for a weather API service (OpenWeatherMap, WeatherAPI, etc.)
+2. Replace the mock data generator in `data/weatherData.js` with API calls
+3. Add your API key to environment variables
+4. Update the data fetching logic in `server.js`
 
 ## License
-This project is created for demonstration purposes.
+Created for demonstration purposes.

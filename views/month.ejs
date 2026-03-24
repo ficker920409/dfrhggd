@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="page-title">
+        <h1>Weather in <%= city %> - Month</h1>
+        <p class="page-subtitle"><%= new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) %></p>
+    </div>
+
+    <section class="month-calendar">
+        <div class="calendar-header">
+            <div class="weekday">Mon</div>
+            <div class="weekday">Tue</div>
+            <div class="weekday">Wed</div>
+            <div class="weekday">Thu</div>
+            <div class="weekday">Fri</div>
+            <div class="weekday">Sat</div>
+            <div class="weekday">Sun</div>
+        </div>
+        <div class="calendar-grid">
+            <% 
+            const firstDay = monthlyForecast[0].date;
+            const firstDayOfWeek = firstDay.getDay();
+            const offset = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1;
+            
+            for (let i = 0; i < offset; i++) { %>
+                <div class="calendar-day empty"></div>
+            <% } 
+            
+            monthlyForecast.forEach(day => { %>
+                <div class="calendar-day">
+                    <div class="day-number"><%= day.day %></div>
+                    <div class="day-icon-small">
+                        <img src="/images/weather-icons/<%= day.code %>.svg" alt="<%= day.condition %>" onerror="this.src='/images/weather-icons/default.svg'">
+                    </div>
+                    <div class="day-temps-small">
+                        <span class="temp-max"><%= day.tempMax > 0 ? '+' : '' %><%= day.tempMax %>°</span>
+                        <span class="temp-min"><%= day.tempMin > 0 ? '+' : '' %><%= day.tempMin %>°</span>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+</div>
+
+<%- include('partials/footer') %>
