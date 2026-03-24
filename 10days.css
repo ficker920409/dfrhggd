@@ -1,0 +1,194 @@
+.ten-days-forecast {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.days-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.day-card {
+    display: grid;
+    grid-template-columns: 150px 100px 1fr 150px 1fr;
+    align-items: center;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    gap: 2rem;
+    transition: all 0.3s;
+}
+
+.day-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.day-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.day-name {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.day-date {
+    color: var(--text-secondary);
+}
+
+.day-icon-large {
+    display: flex;
+    justify-content: center;
+}
+
+.day-icon-large svg {
+    width: 64px;
+    height: 64px;
+    color: var(--accent-color);
+}
+
+.day-description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.day-condition {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.day-feels {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.day-temperature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.temp-range {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.temp-max {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.temp-min {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.temp-bar {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, #3498db, #e74c3c);
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+.day-extra {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.extra-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.extra-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.extra-value {
+    font-weight: 500;
+}
+
+/* Forecast Summary */
+.forecast-summary {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.forecast-summary h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.summary-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.summary-card h4 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.summary-value {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.summary-label {
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .day-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .day-icon-large {
+        justify-content: center;
+    }
+    
+    .day-temperature {
+        align-items: center;
+    }
+    
+    .day-extra {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+}

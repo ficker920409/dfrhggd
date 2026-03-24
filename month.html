@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Forecast - WeatherNow</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="month.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>WeatherNow</h1>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Weather</a>
+                    <a href="hourly.html" class="nav-link">Hourly</a>
+                    <a href="10days.html" class="nav-link">10 Days</a>
+                    <a href="month.html" class="nav-link active">Month</a>
+                </nav>
+                <div class="search-box">
+                    <input type="text" id="citySearch" placeholder="Search city..." class="search-input">
+                    <button id="searchBtn" class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="page-header">
+                <h2 id="pageTitle">Monthly Forecast for Moscow</h2>
+                <p id="pageSubtitle">March 2026</p>
+            </section>
+
+            <section class="month-forecast">
+                <div class="calendar-wrapper">
+                    <div class="calendar-header">
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+                        <div class="weekday">Sun</div>
+                    </div>
+                    <div class="calendar-grid" id="monthCalendar">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="month-statistics">
+                <h3>Monthly Statistics</h3>
+                <div class="stats-grid" id="monthStats">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 WeatherNow. Weather data for demonstration purposes.</p>
+        </div>
+    </footer>
+
+    <script src="weather-data.js"></script>
+    <script src="app.js"></script>
+    <script src="month.js"></script>
+</body>
+</html>
